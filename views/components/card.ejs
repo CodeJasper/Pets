@@ -1,0 +1,19 @@
+<div class="card" >
+
+
+    <% if(pet.image !== undefined) {%>
+        <img src=<%=pet.image%> class="card-img-top" alt="...">
+    <% } else {%>
+        <img src='/assets/no_image.png' class="card-img-top" alt="...">
+        <% }%>
+
+    
+    <div class="card-body">
+      <h2 class="card-title"><%=pet.name%></h2>
+      <p class="card-subtitle"><%=pet.animal%></p>      
+      <div class="card-buttons">
+          <a  type='button' class="btn btn-secondary">Eliminar</a>      
+          <a href="/actualizar-mascota/<%=pet._id%>" type='button' class=" btn btn-primary">Actualizar</a>      
+      </div>
+    </div>
+  </div>

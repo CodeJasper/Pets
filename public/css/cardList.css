@@ -1,0 +1,24 @@
+.wrapper-card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  justify-items: center;
+  gap: 20px;
+  grid-auto-flow: row;
+  padding-top: 120px;
+  padding-bottom: 40px;
+}
+
+.empty-list {
+  padding-top: 120px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-list > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}

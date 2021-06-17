@@ -1,0 +1,11 @@
+<%- include('components/header', {tabTitle:'Registrar mascota', extraCss:[]});%>     
+    <div>
+        <form action='/registrar' method="POST">
+            <input type="text" placeholder="Nombre de la mascota" name="name">
+            <input type="text" placeholder="¿Que animal es?" name="animal">
+            <input type="text" placeholder="Link de la foto de la mascota" name="image">
+            <button type="submit" class="btn btn-primary">Registrar mascota</button>
+        </form>
+    </div>
+</body>
+</html>

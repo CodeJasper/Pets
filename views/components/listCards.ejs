@@ -1,0 +1,14 @@
+<% if(arrayPets.length > 0) {%>
+    <div class="wrapper-card-list">
+        <% arrayPets.map((pet) => {%>
+            <%- include('./card', {pet:pet});%>
+        <%}) %>            
+    </div>    
+<% } else {%>
+    <div class='empty-list'>
+        <div>
+            <h1>No hay mascotas registradas</h1>            
+        </div>
+    </div>
+<% } %>
+
