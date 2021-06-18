@@ -1,6 +1,17 @@
 :root {
   --primary-button: #4caf50;
   --secondary-button: #ff5722;
+  --focus: #878787;
+  --h1-color: #353535;
+}
+
+h1 {
+  text-align: center;
+  color: var(--h1-color);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -25,10 +36,29 @@ body {
   cursor: pointer;
 }
 
+.btn:focus {
+  outline: 1px solid var(--focus);
+  transform: scale(1.02);
+  filter: opacity(0.8);
+}
+
 .btn-primary {
   background-color: var(--primary-button);
 }
 
 .btn-secondary {
   background-color: var(--secondary-button);
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--focus);
+  margin-top: 20px;
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: 0px 0px 3px 3px var(--focus);
 }

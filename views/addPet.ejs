@@ -1,9 +1,10 @@
-<%- include('components/header', {tabTitle:'Registrar mascota', extraCss:[]});%>     
-    <div>
-        <form action='/registrar' method="POST">
-            <input type="text" placeholder="Nombre de la mascota" name="name">
-            <input type="text" placeholder="¿Que animal es?" name="animal">
-            <input type="text" placeholder="Link de la foto de la mascota" name="image">
+<%- include('components/header', {tabTitle:'Registrar mascota', extraCss:['/css/addForm.css']});%>     
+    <div class="wrapper-add-form">
+        <h1>Registrar una mascota</h1>
+        <form class="add-form" action='/registrar' method="POST">
+            <input maxlength="20" required class="input" type="text" placeholder="Nombre de la mascota" name="name">
+            <input maxlength="20" required class="input" type="text" placeholder="¿Que animal es?" name="animal">
+            <input class="input"  type="text" placeholder="Link de la foto de la mascota" name="image">
             <button type="submit" class="btn btn-primary">Registrar mascota</button>
         </form>
     </div>

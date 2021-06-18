@@ -1,0 +1,46 @@
+<%- include('components/header', {tabTitle:'Actualizar mascota', extraCss:['/css/updateForm.css']});%>     
+    <div  class="wrapper-update-form">
+        <h1>Actualizar a <%= data.pet.name %></h1>
+        <form id="form-update" data-id="<%= data.pet._id %>" class="update-form" action='/actualizar' method="POST">         
+            <input maxlength="20" value="<%= data.pet.name %>" required class="input" type="text" placeholder="Nombre de la mascota" name="name">
+            <input maxlength="20" value="<%= data.pet.animal %>" required class="input" type="text" placeholder="¿Que animal es?" name="animal">
+            <input class="input"  value="<%= data.pet.image %>" type="text" placeholder="Link de la foto de la mascota" name="image">
+            <button type="submit" class="btn btn-primary">Actualizar a <%= data.pet.name %></button>
+        </form>
+    </div>
+
+    <script>
+
+        const formUpdate = document.querySelector("#form-update");
+        const id = formUpdate.dataset.id;        
+
+        formUpdate.addEventListener("submit", updatePet);
+
+        async function updatePet(e){            
+            e.preventDefault()
+            const name = formUpdate.elements["name"].value;
+            const animal = formUpdate.elements["animal"].value;
+            const image = formUpdate.elements["image"].value;
+
+            const petToUpdate = {
+                name,
+                animal,
+                image
+            }
+            
+            const response = await fetch(`/actualizar/${id}`,{
+                method:"PUT",
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body:JSON.stringify(petToUpdate)
+            })
+            const responseJson = await response.json()
+            window.location.href = "/lista-mascotas" 
+
+            
+        }
+
+    </script>
+</body>
+</html>

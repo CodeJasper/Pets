@@ -1,8 +1,8 @@
 <div class="card" >
 
 
-    <% if(pet.image !== undefined) {%>
-        <img src=<%=pet.image%> class="card-img-top" alt="...">
+    <% if(pet.image !== "") {%>
+        <img src="<%=pet.image%>" class="card-img-top" alt="...">
     <% } else {%>
         <img src='/assets/no_image.png' class="card-img-top" alt="...">
         <% }%>
@@ -11,9 +11,23 @@
     <div class="card-body">
       <h2 class="card-title"><%=pet.name%></h2>
       <p class="card-subtitle"><%=pet.animal%></p>      
-      <div class="card-buttons">
-          <a  type='button' class="btn btn-secondary">Eliminar</a>      
-          <a href="/actualizar-mascota/<%=pet._id%>" type='button' class=" btn btn-primary">Actualizar</a>      
+      <div class="card-buttons">                    
+            <button id='id-<%=pet._id%>' data-pet='<%=pet._id%>' type='submit' name="modal" class="btn btn-secondary">Eliminar</button>
+            <!-- <a href="/lista-mascotas/<%=pet._id%>"type='button' class="btn btn-secondary">Eliminar</a>       -->          
+            <a href="/actualizar-mascota/<%=pet._id%>" type='button' class=" btn btn-primary">Actualizar</a>      
       </div>
     </div>
   </div>
+
+  <script>              
+      document.querySelector("#id-<%=pet._id%>").addEventListener('click', deletePet);     
+
+      async function deletePet() {          
+        const response =  await fetch("/eliminar/<%=pet._id%>",{
+            method:'DELETE'
+        })       
+        const responseJson = await response.json()
+        window.location.href = "lista-mascotas" 
+      }
+
+  </script>
