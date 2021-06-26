@@ -33,9 +33,24 @@ async function getPetById(_id) {
 
 async function addPet(pet) {
   try {
-    await PetModel.create(pet);
+    const petAdded = await PetModel.create(pet);
+    if (petAdded !== null) {
+      return {
+        error: false,
+        message: "Se ha registrado la mascota satisfactoriamente",
+        petAdded: petAdded,
+      };
+    } else {
+      return {
+        error: true,
+        message: "La mascota no ha sido registrada",
+      };
+    }
   } catch (error) {
-    console.log(error);
+    return {
+      error: true,
+      message: `Ha ocurrido un error: ${error}`,
+    };
   }
 }
 

@@ -1,12 +1,72 @@
 <%- include('components/header', {tabTitle:'Registrar mascota', extraCss:['/css/addForm.css']});%>     
     <div class="wrapper-add-form">
         <h1>Registrar una mascota</h1>
-        <form class="add-form" action='/registrar' method="POST">
+        <form class="add-form" id="form-add" action='/registrar' method="POST">
             <input maxlength="20" required class="input" type="text" placeholder="Nombre de la mascota" name="name">
             <input maxlength="20" required class="input" type="text" placeholder="¿Que animal es?" name="animal">
-            <input class="input"  type="text" placeholder="Link de la foto de la mascota" name="image">
-            <button type="submit" class="btn btn-primary">Registrar mascota</button>
+            <label class="label-input-file" for='input-file'>
+                Seleccione una foto
+                <input accept="image/png, .jpeg, .jpg, image/gif" required id='input-file' class="input" name="image" type="file" >
+            </label>    
+            <img  hidden class="img-form" id='img-form'>        
+            <button id="button-add-form" type="submit" class="btn btn-primary">Registrar mascota</button>
         </form>
     </div>
+
+    <script>
+        const formAdd =  document.querySelector("#form-add");
+        const inputFile = document.querySelector("#input-file");
+        const buttonForm = document.querySelector("#button-add-form")
+        const img = document.querySelector("#img-form");
+
+        let imgBase64;
+
+        inputFile.addEventListener("change", changeImage);
+        formAdd.addEventListener("submit", addPet)     
+
+        function changeImage(e){
+            const reader = new FileReader();
+            
+            if(e.target.files[0].size < (2*1048576)){
+                reader.readAsDataURL(e.target.files[0]);
+                reader.onload = function () {
+                    imgBase64=reader.result;
+                    img.src=(reader.result);
+                    img.hidden=false;
+                }            
+            }
+            else{             
+                alert("La imagen es demasiado pesada, por favor seleccione una imagen con un peso maximo de 2MB");                            
+                inputFile.value=""                
+            }
+            reader.onerror = function (error) {
+                console.log('Error: ', error);
+            };        
+        }
+
+        async function addPet(e){
+            e.preventDefault()      
+            buttonForm.disabled= true      
+            const name = formAdd.elements["name"].value;
+            const animal = formAdd.elements["animal"].value;            
+            const petToAdd={
+                name,
+                animal,
+                image : imgBase64
+            
+            }                        
+            const response = await fetch(`/registrar`,{
+                method:"POST",
+                headers:{
+                   'Content-Type': 'application/json'
+                },
+                body:JSON.stringify(petToAdd)
+            })          
+            const responseJson = await response.json()            
+            
+            window.location.href = "/lista-mascotas" 
+        }
+
+    </script>
 </body>
 </html>

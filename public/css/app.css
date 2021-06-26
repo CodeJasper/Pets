@@ -1,6 +1,7 @@
 :root {
   --primary-button: #4caf50;
   --secondary-button: #ff5722;
+  --button-file-color: #3a42b1;
   --focus: #878787;
   --h1-color: #353535;
 }
@@ -24,7 +25,7 @@ body {
   color: white;
   padding: 10px;
   border: none;
-  transition: filter 0.5s transform 2s;
+  transition: filter 0.2s, transform 0.2s;
   border-radius: 5px;
   outline: none;
   text-decoration: none;
@@ -58,7 +59,46 @@ body {
   margin-top: 20px;
 }
 
+.input[type="file"] {
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+}
+
+.label-input-file {
+  position: relative;
+  width: 90%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--button-file-color);
+  margin-top: 20px;
+  text-align: center;
+  color: white;
+  transition: filter 0.2s, transform 0.2s;
+}
+
+.label-input-file:focus-within {
+  outline: 1px solid var(--focus);
+  transform: scale(1.02);
+  filter: opacity(0.8);
+}
+
+.label-input-file:hover {
+  transform: scale(1.02);
+  filter: opacity(0.8);
+  cursor: pointer;
+}
+
 .input:focus {
   outline: none;
   box-shadow: 0px 0px 3px 3px var(--focus);
+}
+
+.img-form {
+  width: 80%;
+  height: 200px;
+  object-fit: contain;
+  margin-top: 20px;
 }

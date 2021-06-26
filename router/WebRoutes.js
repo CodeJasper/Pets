@@ -32,14 +32,13 @@ router.get("/registrar-mascota", async (req, res) => {
 });
 
 router.post("/registrar", async (req, res) => {
-  await petsApi.addPet(req.body);
-  res.redirect("/lista-mascotas");
+  const response = await petsApi.addPet(req.body);
+  res.send(response);
 });
 
 router.put("/actualizar/:id", async (req, res) => {
   const response = await petsApi.updatePet(req.params.id, req.body);
   res.send(response);
-  // res.redirect("/lista-mascotas");
 });
 
 router.delete("/eliminar/:id", async (req, res) => {

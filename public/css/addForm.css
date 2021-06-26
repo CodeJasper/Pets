@@ -19,6 +19,13 @@
 }
 
 .add-form > button {
+  margin: 0px;
   margin-top: 20px;
   width: 80%;
+}
+
+@media (max-width: 768px) {
+  .add-form {
+    width: 80%;
+  }
 }
