@@ -1,8 +1,14 @@
-<% if(arrayPets.length > 0) {%>
-    <div class="wrapper-card-list">
-        <% arrayPets.map((pet) => {%>
-            <%- include('./card', {pet:pet});%>
-        <%}) %>            
+<% if(arrayPets.length > 0) {%>    
+    <div class="container-sm pb-5 pt-5">
+        <div class="row row gy-5 row gx-5">
+
+            <% arrayPets.map((pet) => {%>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center" >    
+                <%- include('./card', {pet:pet});%>
+                </div>
+            <%}) %>            
+
+        </div>
     </div>    
 <% } else {%>
     <div class='empty-list'>

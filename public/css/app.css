@@ -21,7 +21,6 @@ body {
 }
 
 .btn {
-  margin-left: 20px;
   color: white;
   padding: 10px;
   border: none;
@@ -45,6 +44,22 @@ body {
 
 .btn-primary {
   background-color: var(--primary-button);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-button);
+}
+
+.btn-primary:disabled {
+  background-color: var(--primary-button);
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-button);
+}
+
+.btn-secondary:disabled {
+  background-color: var(--secondary-button);
 }
 
 .btn-secondary {

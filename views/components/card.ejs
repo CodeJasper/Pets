@@ -1,5 +1,4 @@
-<div class="card" >
-
+<div class="card petCard" >    
 
     <% if(pet.image !== "") {%>
         <img src="<%=pet.image%>" class="card-img-top" alt="...">
@@ -10,12 +9,10 @@
     
     <div class="card-body">
       <h2 class="card-title"><%=pet.name%></h2>
-      <p class="card-subtitle"><%=pet.animal%></p>      
-      <div class="card-buttons">                    
-            <button id='button-delete-id-<%=pet._id%>' type='submit' class="btn btn-secondary">Eliminar</button>
-            <!-- <a href="/lista-mascotas/<%=pet._id%>"type='button' class="btn btn-secondary">Eliminar</a>       -->          
-            <!-- <button href="/actualizar-mascota/<%=pet._id%>" type='button' class=" btn btn-primary">Actualizar</button>       -->
-            <button id='button-update-id-<%=pet._id%>' class=" btn btn-primary">Actualizar</button>
+      <p class="card-subtitle mb-2 text-muted"><%=pet.animal%></p>      
+      <div class="d-flex justify-content-end">                    
+            <button id='button-delete-id-<%=pet._id%>' type='submit' class="btn btn-secondary me-2">Eliminar</button>            
+            <button id='button-update-id-<%=pet._id%>' class=" btn btn-primary ">Actualizar</button>
       </div>
     </div>
   </div>
