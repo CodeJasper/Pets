@@ -12,30 +12,11 @@
       <h2 class="card-title"><%=pet.name%></h2>
       <p class="card-subtitle"><%=pet.animal%></p>      
       <div class="card-buttons">                    
-            <button id='button-delete-id-<%=pet._id%>' data-pet='<%=pet._id%>' type='submit' name="modal" class="btn btn-secondary">Eliminar</button>
+            <button id='button-delete-id-<%=pet._id%>' type='submit' class="btn btn-secondary">Eliminar</button>
             <!-- <a href="/lista-mascotas/<%=pet._id%>"type='button' class="btn btn-secondary">Eliminar</a>       -->          
             <!-- <button href="/actualizar-mascota/<%=pet._id%>" type='button' class=" btn btn-primary">Actualizar</button>       -->
-            <button id='button-update-id-<%=pet._id%>' data-pet='<%=pet._id%>' class=" btn btn-primary">Actualizar</button>
+            <button id='button-update-id-<%=pet._id%>' class=" btn btn-primary">Actualizar</button>
       </div>
     </div>
   </div>
-
-  <script>              
-      document.querySelector("#button-delete-id-<%=pet._id%>").addEventListener('click', deletePet);     
-      document.querySelector("#button-update-id-<%=pet._id%>").addEventListener('click', updatePet);     
-
-      async function deletePet() {                  
-        document.querySelector("#button-delete-id-<%=pet._id%>").disabled=true
-        const response =  await fetch("/eliminar/<%=pet._id%>",{
-            method:'DELETE'
-        })       
-        const responseJson = await response.json()
-        window.location.href = "lista-mascotas" 
-      }
-
-      function updatePet() {                  
-        document.querySelector("#button-update-id-<%=pet._id%>").disabled=true
-        window.location.href = "/actualizar-mascota/<%=pet._id%>" 
-      }
-
-  </script>
+ <script src="/js/components/card.js" data-petid='<%=pet._id%>'></script>
