@@ -14,7 +14,7 @@ router.get("/lista-mascotas/:id?", async (req, res) => {
   //   // modal = true;
   // }
   const pets = await petsApi.getPets();
-  res.render("index", { arrayPets: pets, modal });
+  res.render("index", { arrayPets: pets, currentPage: "/lista-mascotas" });
 });
 
 router.get("/actualizar-mascota/:id", async (req, res) => {
@@ -28,7 +28,7 @@ router.get("/actualizar-mascota/:id", async (req, res) => {
 });
 
 router.get("/registrar-mascota", async (req, res) => {
-  res.render("addPet");
+  res.render("addPet", { currentPage: "/registrar-mascota" });
 });
 
 router.post("/registrar", async (req, res) => {

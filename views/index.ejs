@@ -1,5 +1,5 @@
 <%- include('components/header', {tabTitle:'Lista de mascotas', extraCss:['/css/petCard.css','/css/cardList.css','/css/bar.css']});%>   
-<!-- <%- include('components/bar');%>     -->
+<%- include('components/navBar', {currentPage:currentPage});%>    
 <%- include('components/listCards', {arrayPets:arrayPets});%> 
    
 <%- include('components/endsBody')%>   

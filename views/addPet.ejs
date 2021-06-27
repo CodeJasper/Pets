@@ -1,4 +1,5 @@
 <%- include('components/header', {tabTitle:'Registrar mascota', extraCss:['/css/addForm.css']});%>     
+<%- include('components/navBar', {currentPage:currentPage});%>    
     <div class="wrapper-add-form">
         <h1>Registrar una mascota</h1>
         <form class="add-form" id="form-add" action='/registrar' method="POST">
