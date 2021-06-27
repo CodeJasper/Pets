@@ -1,7 +1,8 @@
 <%- include('components/header', {tabTitle:'Actualizar mascota', extraCss:['/css/updateForm.css']});%>     
-    <div  class="wrapper-update-form">
+<%- include('components/navBar', {currentPage:""});%>    
+<div class="container view-form">
         <h1>Actualizar a <%= data.pet.name %></h1>
-        <form id="form-update" data-id="<%= data.pet._id %>" data-img="<%= data.pet.image %>" class="update-form" action='/actualizar' method="POST">         
+        <form id="form-update" data-id="<%= data.pet._id %>" data-img="<%= data.pet.image %>" class="d-flex flex-column align-items-center" action='/actualizar' method="POST">         
             <input maxlength="20" value="<%= data.pet.name %>" required class="input" type="text" placeholder="Nombre de la mascota" name="name">
             <input maxlength="20" value="<%= data.pet.animal %>" required class="input" type="text" placeholder="¿Que animal es?" name="animal">
             <label class="label-input-file" for='input-file'>

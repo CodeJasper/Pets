@@ -84,7 +84,7 @@ body {
 
 .label-input-file {
   position: relative;
-  width: 90%;
+  width: 100%;
   padding: 10px;
   border-radius: 5px;
   background-color: var(--button-file-color);
@@ -116,4 +116,13 @@ body {
   height: 200px;
   object-fit: contain;
   margin-top: 20px;
+}
+
+form > button {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.view-form {
+  margin-top: 50px;
 }
