@@ -7,7 +7,16 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <%- include('navBarItem.ejs', {text:'Lista de mascotas', id:'list-pets', href:'/lista-mascotas', currentPage:currentPage});%>   
-          <%- include('navBarItem.ejs', {text:'Añadir una mascota', id:'add-pet', href:'/registrar-mascota', currentPage:currentPage});%>             
+          <% if(user !== null){%>
+            <%- include('navBarItem.ejs', {text:'Añadir una mascota', id:'add-pet', href:'/registrar-mascota', currentPage:currentPage});%>             
+          <% } %>
+        </ul>
+
+        <ul class="navbar-nav">
+          <% if(user === null){%>
+            <%- include('navBarItem.ejs', {text:'Iniciar sesión', id:'signin', href:'/usuario/iniciar-sesion', currentPage:currentPage});%>             
+            <%- include('navBarItem.ejs', {text:'Registrarse', id:'signup', href:'/usuario/registrar-usuario', currentPage:currentPage});%>             
+          <% } %>
         </ul>
       </div>
     </div>

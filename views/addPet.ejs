@@ -1,18 +1,21 @@
-<%- include('components/header', {tabTitle:'Registrar mascota', extraCss:['/css/addForm.css']});%>     
-<%- include('components/navBar', {currentPage:currentPage});%>    
-    <div class="container view-form">
-        <h1>Registrar una mascota</h1>
-        <form class="d-flex flex-column align-items-center" id="form-add" action='/registrar' method="POST">
-            <input maxlength="20" required class="input" type="text" placeholder="Nombre de la mascota" name="name">
-            <input maxlength="20" required class="input" type="text" placeholder="¿Que animal es?" name="animal">
-            <label class="label-input-file" for='input-file'>
-                Seleccione una foto
-                <input accept="image/png, .jpeg, .jpg, image/gif" required id='input-file' class="input" name="image" type="file" >
-            </label>    
-            <img  hidden class="img-form" id='img-form'>        
-            <button id="button-add-form" type="submit" class="btn btn-primary">Registrar mascota</button>
-        </form>
-    </div>
-    <script src="/js/addPet.js"></script>   
-    <%- include('components/endsBody')%>   
-</html>
+<%- include('components/header', {tabTitle:"Añadir una mascota", extraCss:extraCss});%>   
+<%- include('components/navBar', {currentPage:"/registrar-mascota"});%>    
+
+
+<div class="container view-form">
+    <h1>Registrar una mascota</h1>
+    <form class="d-flex flex-column align-items-center" id="form-add" action='/registrar' method="POST">
+        <input maxlength="20" required class="input" type="text" placeholder="Nombre de la mascota" name="name">
+        <input maxlength="20" required class="input" type="text" placeholder="¿Que animal es?" name="animal">
+        <label class="label-input-file" for='input-file'>
+            Seleccione una foto
+            <input accept="image/png, .jpeg, .jpg, image/gif" required id='input-file' class="input" name="image" type="file" >
+        </label>    
+        <img  hidden class="img-form" id='img-form'>        
+        <button id="button-add-form" type="submit" class="btn btn-primary">Registrar mascota</button>
+    </form>
+</div>
+<script src="/js/addPet.js"></script>   
+
+
+<%- include('components/endsBody');%>    

@@ -1,5 +1,4 @@
 "use strict";
-
 const formAdd = document.querySelector("#form-add");
 const inputFile = document.querySelector("#input-file");
 const buttonForm = document.querySelector("#button-add-form");

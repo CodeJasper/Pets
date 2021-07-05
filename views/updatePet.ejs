@@ -1,19 +1,21 @@
-<%- include('components/header', {tabTitle:'Actualizar mascota', extraCss:['/css/updateForm.css']});%>     
-<%- include('components/navBar', {currentPage:""});%>    
-<div class="container view-form">
-        <h1>Actualizar a <%= data.pet.name %></h1>
-        <form id="form-update" data-id="<%= data.pet._id %>" data-img="<%= data.pet.image %>" class="d-flex flex-column align-items-center" action='/actualizar' method="POST">         
-            <input maxlength="20" value="<%= data.pet.name %>" required class="input" type="text" placeholder="Nombre de la mascota" name="name">
-            <input maxlength="20" value="<%= data.pet.animal %>" required class="input" type="text" placeholder="¿Que animal es?" name="animal">
-            <label class="label-input-file" for='input-file'>
-                Seleccione una foto nueva
-                <input accept="image/png, .jpeg, .jpg, image/gif" id='input-file' class="input" name="image" type="file" >
-            </label>    
-            <img src="<%= data.pet.image %>" class="img-form" id='img-form'>               
-            <button  id="button-update-form" type="submit" class="btn btn-primary">Actualizar a <%= data.pet.name %></button>
-        </form>
-    </div>
+<%- include('components/header', {tabTitle:"Actualizar mascota", extraCss:extraCss});%>   
+<%- include('components/navBar', {currentPage:"/actualizar-mascota"});%>    
 
-    <script src="/js/updatePet.js"></script>
-    <%- include('components/endsBody')%>   
-</html>
+<div class="container view-form">
+    <h1>Actualizar a <%= data.pet.name %></h1>
+    <form id="form-update" data-id="<%= data.pet._id %>" data-img="<%= data.pet.image %>" class="d-flex flex-column align-items-center" action='/actualizar' method="POST">         
+        <input maxlength="20" value="<%= data.pet.name %>" required class="input" type="text" placeholder="Nombre de la mascota" name="name">
+        <input maxlength="20" value="<%= data.pet.animal %>" required class="input" type="text" placeholder="¿Que animal es?" name="animal">
+        <label class="label-input-file" for='input-file'>
+            Seleccione una foto nueva
+            <input accept="image/png, .jpeg, .jpg, image/gif" id='input-file' class="input" name="image" type="file" >
+        </label>    
+        <img src="<%= data.pet.image %>" class="img-form" id='img-form'>               
+        <button  id="button-update-form" type="submit" class="btn btn-primary">Actualizar a <%= data.pet.name %></button>
+    </form>
+</div>
+
+<script src="/js/updatePet.js"></script>    
+
+
+<%- include('components/endsBody');%>    

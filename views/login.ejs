@@ -1,0 +1,13 @@
+<%- include('components/header', {tabTitle:"Iniciar sesion", extraCss:extraCss});%>   
+<%- include('components/navBar', {currentPage:"/usuario/iniciar-sesion"});%>    
+
+<div class="container view-form">
+    <h1>Iniciar sesión</h1>
+    <form class="d-flex flex-column align-items-center" id="form-add" action='/usuario/ingresar' method="POST">
+        <input maxlength="20" required class="input" type="email" placeholder="Correo electronico" name="username">
+        <input maxlength="20" required class="input" type="password" placeholder="Contraseña" name="password">       
+        <button id="button-add-form" type="submit" class="btn btn-primary">Iniciar sesión</button>
+    </form>
+</div>
+
+<%- include('components/endsBody');%>    

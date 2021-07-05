@@ -1,0 +1,15 @@
+<%- include('components/header', {tabTitle:"Registrar usuario", extraCss:extraCss});%>   
+<%- include('components/navBar', {currentPage:"/usuario/registrar-usuario"});%>    
+
+<div class="container view-form">
+    <h1>Registrarse</h1>
+    <form class="d-flex flex-column align-items-center" id="form-add" action='/usuario/registrar' method="POST">
+        <input maxlength="20" required class="input" type="text" placeholder="Nombre" name="name">
+        <input maxlength="20" required class="input" type="email" placeholder="Correo electronico" name="email">
+        <input maxlength="20" required class="input" type="password" placeholder="Contraseña" name="password">       
+        <input maxlength="20" required class="input" type="password" placeholder="Confirmar contraseña" name="confirmPassword">               
+        <button id="button-add-form" type="submit" class="btn btn-primary">Registrarse</button>
+    </form>
+</div>
+
+<%- include('components/endsBody');%>    

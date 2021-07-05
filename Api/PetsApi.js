@@ -1,4 +1,4 @@
-const PetModel = require("../../models_db/PetsModel");
+const PetModel = require("../models_db/PetsModel");
 
 async function getPets() {
   try {
