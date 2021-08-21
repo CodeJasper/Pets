@@ -3,6 +3,7 @@ const app = express();
 const passport = require("passport");
 const session = require("express-session");
 const cookieParse = require("cookie-parser");
+const flash = require("connect-flash");
 const port = process.env.PORT || 3000;
 const PassportLocal = require("passport-local").Strategy;
 require("dotenv").config();
@@ -20,13 +21,18 @@ app.use(
 app.use(cookieParse("secret"));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 app.use(express.urlencoded({ extended: false, limit: "50mb" }));
 app.use(express.json({ limit: "50mb" }));
 app.use(express.static(__dirname + "/public"));
 
-//Global varibles
+//Global variables
 app.use((req, res, next) => {
   res.locals.user = req.user || null;
+  res.locals.error_login = req.flash("error");
+  res.locals.error_message = req.flash("error_message");
+  res.locals.success_message = req.flash("success_message");
+  res.locals.info_message = req.flash("info_message");
 
   next();
 });

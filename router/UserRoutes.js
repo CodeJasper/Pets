@@ -7,17 +7,15 @@ const passport = require("passport");
 router.post("/registrar", async (req, res) => {
   const error = userValidation.validateRegister.validate(req.body);
 
-  if (req.body.password !== req.body.confirmPassword) {
-    console.log("Las contraseñas no coinciden");
+  if (error.error) {
+    req.flash("error_message", error.error.details[0].message);
+    return res.redirect("/usuario/registrar-usuario");
   }
-  if (error.error) return res.send(error);
 
   const isEmailExist = await userApi.findUserByEmail(req.body.email);
   if (isEmailExist) {
-    return res.send({
-      error: true,
-      message: "Este correo ya esta asociado a otro usuario",
-    });
+    req.flash("error_message", "Este correo ya esta asociado a otro usuario");
+    return res.redirect("/usuario/registrar-usuario");
   }
 
   const newUser = {
@@ -28,10 +26,15 @@ router.post("/registrar", async (req, res) => {
 
   const response = await userApi.registerUser(newUser);
   if (response.error) {
-    //TODO Handle error
+    req.flash(
+      "error_message",
+      "No se ha podido registrar el usuario por el siguiente error: " +
+        response.error
+    );
+    res.redirect("/usuario/registrar-usuario");
   } else {
-    //TODO Handle register succesfuly
-    res.redirect("/usuario/iniciar-sesion");
+    req.flash("error_message", "Usuario registrado satisfactoriamente");
+    res.redirect("/usuario/registrar-usuario");
   }
 });
 
@@ -40,6 +43,9 @@ router.post(
   passport.authenticate("local", {
     failureRedirect: "/usuario/iniciar-sesion",
     successRedirect: "/lista-mascotas",
+    failureFlash: true,
+    badRequestMessage:
+      "Los campos correo electronico y contraseña son obligatorios",
   })
 );
 

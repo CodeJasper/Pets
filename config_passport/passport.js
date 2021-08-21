@@ -18,7 +18,7 @@ passport.use(
       });
     }
 
-    return done(null, userExists);
+    return done(null, userExists, { success_message: "success message" });
   })
 );
 

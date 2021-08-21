@@ -1,6 +1,12 @@
 <%- include('components/header', {tabTitle:"Iniciar sesion", extraCss:extraCss});%>   
 <%- include('components/navBar', {currentPage:"/usuario/iniciar-sesion"});%>    
 
+
+<% if(error_login[0]) {%>
+    <%- include('components/modal', {message:error_login[0], title:"Ha ocurrido un error"});%>    
+<% } %>
+
+
 <div class="container view-form">
     <h1>Iniciar sesión</h1>
     <form class="d-flex flex-column align-items-center" id="form-add" action='/usuario/ingresar' method="POST">

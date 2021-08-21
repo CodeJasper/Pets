@@ -1,6 +1,11 @@
 <%- include('components/header', {tabTitle:"Registrar usuario", extraCss:extraCss});%>   
 <%- include('components/navBar', {currentPage:"/usuario/registrar-usuario"});%>    
 
+
+<% if(error_message[0]) {%>
+    <%- include('components/modal', {message:error_message[0], title:"Ha ocurrido un error"});%>    
+<% } %>
+
 <div class="container view-form">
     <h1>Registrarse</h1>
     <form class="d-flex flex-column align-items-center" id="form-add" action='/usuario/registrar' method="POST">
